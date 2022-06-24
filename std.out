@@ -1,0 +1,4 @@
+ERROR - D:\Creo\Creo 7.0.1.0\Common Files\text\config.pro, linenum 3 :  Keyword 'ALLOW_SAVE_FAILED_MODELS' is not valid.
+ERROR - D:\Creo\Creo 7.0.1.0\Common Files\text\config.pro, linenum 9 :  Keyword 'SYSTEM_BACKGROUND_COLOR' is not valid.
+ERROR - D:\Creo\Creo 7.0.1.0\Common Files\text\config.pro, linenum 44: Invalid value 'shading_low' for keyword 'SAVE_MODEL_DISPLAY'.
+ERROR - D:\Creo\Creo 7.0.1.0\Common Files\text\config.pro, linenum 50:  Keyword 'ENABLE_ABS_ACCURACY' is not valid.

@@ -2,16 +2,21 @@ import PySimpleGUI as sg
 import creopyson
 import subprocess
 import time
+import os.path
 
-c = creopyson.Client()
-c.connect()
-c.creo_set_creo_version(7)
 
-if c.is_creo_running() == False:
+try:
+    c = creopyson.Client()
+    c.connect()
+except ConnectionError as e:
+    print("Connection error")
+    
+if not c.is_creo_running():
     subprocess.Popen("D:/Creo/Creo 7.0.1.0/Parametric/bin/parametric.bat")
     time.sleep(30)
-    c.connect()
-    c.creo_set_creo_version(7)
+
+c.connect()
+c.creo_set_creo_version(7)
 
 
 dims_dict = {
@@ -149,7 +154,7 @@ layout = [
     [
         sg.Frame(
             layout=[
-                [sg.Input(size=(50,1), key='-FILE_INPUT-'), 
+                [sg.Input(size=(50,1), key='-FILE_INPUT-', default_text = os.getcwd()), 
                 sg.FileSaveAs('Choose folder', key = '-FILE_SAVE_TXT-', size=(15,1), file_types=(('TXT', '.txt'),), enable_events=True),
                 sg.Button('Save', key='-FILE_CONFIRM-', size=(10,1), target='-FILE_INPUT-')]
             ],
@@ -159,7 +164,7 @@ layout = [
     [
         sg.Frame(
             layout=[
-                [sg.Input(size=(50,1), key='-FILE_STEP_INPUT-'), 
+                [sg.Input(size=(50,1), key='-FILE_STEP_INPUT-', default_text = os.getcwd()), 
                 sg.FolderBrowse('Choose folder', size=(15,1)),
                 sg.Button('Export', key='-STEP_CONFIRM-', size=(10,1), target='-FILE_STEP_INPUT-')]
             ],
@@ -169,7 +174,7 @@ layout = [
     [
         sg.Frame(
             layout=[
-                [sg.Input(size=(50,1), key='-FILE_3DPDF_INPUT-'), 
+                [sg.Input(size=(50,1), key='-FILE_3DPDF_INPUT-', default_text = os.getcwd()), 
                 sg.FolderBrowse('Choose folder', size=(15,1)),
                 sg.Button('Export', key='-3DPDF_CONFIRM-', size=(10,1), target='-FILE_3DPDF_INPUT-')]
             ],
